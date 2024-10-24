@@ -2,10 +2,10 @@
 package EDD;
 
 public class Nodo {
-    private Object element;
+    private Character element;
     private Nodo next;
 
-    public Nodo(Object element) {
+    public Nodo(Character element) {
         this.element = element;
         this.next = null;
     }
@@ -13,14 +13,14 @@ public class Nodo {
     /**
      * @return the element
      */
-    public Object getElement() {
+    public Character getElement() {
         return element;
     }
 
     /**
      * @param element the element to set
      */
-    public void setElement(Object element) {
+    public void setElement(Character element) {
         this.element = element;
     }
 

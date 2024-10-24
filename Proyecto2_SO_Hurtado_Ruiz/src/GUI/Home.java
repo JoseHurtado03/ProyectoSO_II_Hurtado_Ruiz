@@ -95,23 +95,23 @@ public class Home extends javax.swing.JFrame {
         jPanel1.add(starTrekLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, 80));
 
         jLabel1.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        jLabel1.setForeground(javax.swing.UIManager.getDefaults().getColor("Actions.GreyInline"));
-        jLabel1.setText("Cola 1");
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel1.setText("Cola P1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 200, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        jLabel2.setForeground(javax.swing.UIManager.getDefaults().getColor("Actions.GreyInline"));
-        jLabel2.setText("Cola 2");
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel2.setText("Cola P2");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 200, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        jLabel3.setForeground(javax.swing.UIManager.getDefaults().getColor("Actions.GreyInline"));
-        jLabel3.setText("Cola 1");
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel3.setText("Cola P1");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        jLabel4.setForeground(javax.swing.UIManager.getDefaults().getColor("Actions.GreyInline"));
-        jLabel4.setText("Cola 2");
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setText("Cola P2");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
 
         queueSW4.setBackground(new java.awt.Color(50, 48, 157));
@@ -203,23 +203,23 @@ public class Home extends javax.swing.JFrame {
         jPanel1.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 120, 100));
 
         jLabel5.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        jLabel5.setForeground(javax.swing.UIManager.getDefaults().getColor("Actions.GreyInline"));
-        jLabel5.setText("Cola 3");
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel5.setText("Cola P3");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        jLabel6.setForeground(javax.swing.UIManager.getDefaults().getColor("Actions.GreyInline"));
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setText("Refuerzo");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        jLabel7.setForeground(javax.swing.UIManager.getDefaults().getColor("Actions.GreyInline"));
+        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("Refuerzo");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 360, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        jLabel8.setForeground(javax.swing.UIManager.getDefaults().getColor("Actions.GreyInline"));
-        jLabel8.setText("Cola 3");
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel8.setText("Cola P3");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 360, -1, -1));
 
         victoriesST.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N

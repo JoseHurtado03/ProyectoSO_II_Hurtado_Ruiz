@@ -58,7 +58,7 @@ public class Queue {
         return getHead() == null;
     }
     
-    public Nodo enqueue(Object element){
+    public Nodo enqueue(Character element){
         Nodo node = new Nodo(element);
         if (isEmpty()){
             setHead(node);
@@ -96,16 +96,6 @@ public class Queue {
                 setTail(null);
             }
             size--;
-        }
-    }
-    
-    //Probablemente no sea necesaria
-    public void print(){
-        for (int i = 0; i < getSize(); i++) {
-            Nodo node = getHead();
-            System.out.println("Elemento "+(i+1)+": "+node.getElement());
-            Nodo aux = dispatch();
-            enqueue(aux);
         }
     }
 }
