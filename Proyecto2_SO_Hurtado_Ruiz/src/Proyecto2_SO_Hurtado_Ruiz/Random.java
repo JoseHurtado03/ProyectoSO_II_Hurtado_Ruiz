@@ -3,8 +3,15 @@ package Proyecto2_SO_Hurtado_Ruiz;
 
 public class Random {
     
-    public int genPriority() {
-        return (int) (Math.random() * 3) + 1;
+    public int genPriority(int ability, int ps, int force, int agility) {
+        int value = ability + ps + force + agility;
+        if (value >= 3){
+            return 1;
+        } else if (value == 2){
+            return 2;
+        } else{
+            return 3;
+        }
     }
     
     public int qualityNum(int n) {

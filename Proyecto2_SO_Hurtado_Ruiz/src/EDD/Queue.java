@@ -1,5 +1,6 @@
 
 package EDD;
+import Proyecto2_SO_Hurtado_Ruiz.Character;
 
 public class Queue {
     private Nodo head;
