@@ -25,7 +25,7 @@ public class Admin {
         this.queueSTR = queueSTR;
     }
     
-    public Character giveSWChar(){
+    public CharacterS giveSWChar(){
         if (!queueSW1.isEmpty()){
             return queueSW1.dispatch().getElement();
         } else if (!queueSW2.isEmpty()){
@@ -36,7 +36,7 @@ public class Admin {
         return null;
     }
     
-    public Character giveSTChar(){
+    public CharacterS giveSTChar(){
         if (!queueST1.isEmpty()){
             return queueST1.dispatch().getElement();
         } else if (!queueST2.isEmpty()){
@@ -45,5 +45,31 @@ public class Admin {
             return queueST3.dispatch().getElement();
         }
         return null;
+    }
+    
+    public CharacterS createCharacter(){
+        RandomGen random = new RandomGen();
+        CharacterS character = new CharacterS(random.genRandomNum(0, 100000));
+        return character;
+    }
+    
+    public void locateCharacter(CharacterS character, int franchise){           //Si franchise es 1, es un personaje de Star Wars
+        if (franchise == 1){                                                    //Si franchise es 2, es un personaje de Star Trek
+            if (character.getPriority() == 1){
+                queueSW1.enqueue(character);
+            } else if (character.getPriority() == 2){
+                queueSW2.enqueue(character);
+            } else{
+                queueSW3.enqueue(character);
+            }
+        } else if (franchise == 2){
+            if (character.getPriority() == 1){
+                queueST1.enqueue(character);
+            } else if (character.getPriority() == 2){
+                queueST2.enqueue(character);
+            } else{
+                queueST3.enqueue(character);
+            }
+        }
     }
 }

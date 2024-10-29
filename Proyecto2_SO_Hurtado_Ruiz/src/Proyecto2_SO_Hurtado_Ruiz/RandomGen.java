@@ -1,7 +1,7 @@
 
 package Proyecto2_SO_Hurtado_Ruiz;
 
-public class Random {
+public class RandomGen {
     
     public int genPriority(int ability, int ps, int force, int agility) {
         int value = ability + ps + force + agility;
@@ -35,5 +35,9 @@ public class Random {
             // 33% de probabilidad para retornar 3 (de 67 a 100). No hay combate.
             return 3;
         }
+    }
+    
+    public int genRandomNum(int min, int max) {
+        return (int) (Math.random() * (max - min + 1)) + min;
     }
 }

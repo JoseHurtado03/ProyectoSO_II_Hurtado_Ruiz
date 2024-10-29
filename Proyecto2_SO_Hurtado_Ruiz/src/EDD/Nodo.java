@@ -1,12 +1,12 @@
 
 package EDD;
-import Proyecto2_SO_Hurtado_Ruiz.Character;
+import Proyecto2_SO_Hurtado_Ruiz.CharacterS;
 
 public class Nodo {
-    private Character element;
+    private CharacterS element;
     private Nodo next;
 
-    public Nodo(Character element) {
+    public Nodo(CharacterS element) {
         this.element = element;
         this.next = null;
     }
@@ -14,14 +14,14 @@ public class Nodo {
     /**
      * @return the element
      */
-    public Character getElement() {
+    public CharacterS getElement() {
         return element;
     }
 
     /**
      * @param element the element to set
      */
-    public void setElement(Character element) {
+    public void setElement(CharacterS element) {
         this.element = element;
     }
 

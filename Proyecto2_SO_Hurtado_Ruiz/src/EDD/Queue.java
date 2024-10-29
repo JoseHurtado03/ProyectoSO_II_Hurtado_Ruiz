@@ -1,6 +1,6 @@
 
 package EDD;
-import Proyecto2_SO_Hurtado_Ruiz.Character;
+import Proyecto2_SO_Hurtado_Ruiz.CharacterS;
 
 public class Queue {
     private Nodo head;
@@ -59,7 +59,7 @@ public class Queue {
         return getHead() == null;
     }
     
-    public Nodo enqueue(Character element){
+    public Nodo enqueue(CharacterS element){
         Nodo node = new Nodo(element);
         if (isEmpty()){
             setHead(node);
@@ -87,16 +87,14 @@ public class Queue {
         return null;
     }
     
-    //Probablemente no sea necesaria
-    public void dequeue(){
-        if (!isEmpty()){
-            Nodo pointer = getHead();
-            setHead(pointer.getNext());
-            pointer.setNext(null);
-            if (getHead() == null){
-                setTail(null);
-            }
-            size--;
+    public String showIDs(){
+        String ids = "";
+        Nodo pointer = getHead();
+        for (int i = 0; i < this.getSize(); i++) {
+            ids += pointer.getElement().getId()+"\n";
+            pointer = pointer.getNext();
         }
+        return ids;
     }
+    
 }

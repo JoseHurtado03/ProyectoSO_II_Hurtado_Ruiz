@@ -1,6 +1,9 @@
 
 package Proyecto2_SO_Hurtado_Ruiz;
 
+import EDD.Queue;
+import GUI.Home;
+
 /**
  *
  * @author José Hurtado y Joseph Ruiz
@@ -8,7 +11,7 @@ package Proyecto2_SO_Hurtado_Ruiz;
 public class Main {
 
     public static void main(String[] args) {
-        //Nada aún
+        Home mainWindow = new Home();
+        mainWindow.setVisible(true);
     }
-    
 }
