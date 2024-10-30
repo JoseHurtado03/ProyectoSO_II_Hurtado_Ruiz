@@ -1,7 +1,6 @@
 
 package Proyecto2_SO_Hurtado_Ruiz;
 
-import EDD.Queue;
 import GUI.Home;
 
 /**
