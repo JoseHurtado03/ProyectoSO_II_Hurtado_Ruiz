@@ -20,8 +20,8 @@ public class CharacterS {
         this.random = new RandomGen();
         this.ability = random.qualityNum(60);
         this.ps = random.qualityNum(70);
-        this.force = random.qualityNum(50);;
-        this.agility = random.qualityNum(40);;
+        this.force = random.qualityNum(50);
+        this.agility = random.qualityNum(40);
         this.priority = random.genPriority(ability, ps, force, agility);
         this.countStarvation = 0;
     }
@@ -29,6 +29,7 @@ public class CharacterS {
     public void changePriority(){
         if (getCountStarvation() == 8){
             setPriority(getPriority() + 1);
+            countStarvation = 0;
         }
     }
     

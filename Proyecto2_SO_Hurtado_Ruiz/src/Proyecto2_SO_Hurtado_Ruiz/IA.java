@@ -19,7 +19,7 @@ public class IA {
     private Queue queueSWR;
     private Queue queueSTR;
     private String status;
-    private int time;
+    private JTextField time;
 
     public IA(Queue queueSW1, Queue queueST1, Queue queueSWR, Queue queueSTR, JTextField time) {
         this.queueSW1 = queueSW1;
@@ -27,7 +27,7 @@ public class IA {
         this.queueSWR = queueSWR;
         this.queueSTR = queueSTR;
         this.status = "Esperando";
-        this.time = Integer.parseInt(time.getText());
+        this.time = time;
     }
     
     public void decideResult(CharacterS charSW, CharacterS charST){
@@ -51,7 +51,8 @@ public class IA {
     
     public void sleepCode() {
         try {
-            Thread.sleep(time*10);
+            int num = Integer.parseInt(time.getText());
+            Thread.sleep(num*10);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
