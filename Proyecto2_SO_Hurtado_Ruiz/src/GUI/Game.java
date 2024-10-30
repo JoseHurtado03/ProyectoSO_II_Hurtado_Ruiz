@@ -6,7 +6,7 @@ package GUI;
 
 /**
  *
- * @author josep
+ * @author José Hurtado y Joseph Ruiz
  */
 public class Game extends javax.swing.JFrame {
 

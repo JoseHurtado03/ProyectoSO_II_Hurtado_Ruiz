@@ -6,28 +6,31 @@
 package Proyecto2_SO_Hurtado_Ruiz;
 
 import EDD.Queue;
+import java.util.concurrent.Semaphore;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
  *
- * @author hvjos
+ * @author José Hurtado y Joseph Ruiz
  */
-public class IA {
+public class IA extends Thread{
     private Queue queueSW1;
     private Queue queueST1;
     private Queue queueSWR;
     private Queue queueSTR;
     private String status;
     private JTextField time;
+    private Semaphore mutex;
 
-    public IA(Queue queueSW1, Queue queueST1, Queue queueSWR, Queue queueSTR, JTextField time) {
+    public IA(Queue queueSW1, Queue queueST1, Queue queueSWR, Queue queueSTR, JTextField time, Semaphore mutex) {
         this.queueSW1 = queueSW1;
         this.queueST1 = queueST1;
         this.queueSWR = queueSWR;
         this.queueSTR = queueSTR;
         this.status = "Esperando";
         this.time = time;
+        this.mutex= mutex;
     }
     
     public void decideResult(CharacterS charSW, CharacterS charST){
@@ -56,5 +59,9 @@ public class IA {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+    
+    public void run(){
+
     }
 }
