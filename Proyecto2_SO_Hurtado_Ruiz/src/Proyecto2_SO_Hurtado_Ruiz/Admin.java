@@ -47,11 +47,11 @@ public class Admin {
         return null;
     }
     
-    public CharacterS createCharacter(){
-        RandomGen random = new RandomGen();
-        CharacterS character = new CharacterS(random.genRandomNum(0, 100000));
-        return character;
-    }
+//    public CharacterS createCharacter(){
+//        RandomGen random = new RandomGen();
+//        CharacterS character = new CharacterS(random.genRandomNum(0, 100000));
+//        return character;
+//    }
     
     public void locateCharacter(CharacterS character, int franchise){           //Si franchise es 1, es un personaje de Star Wars
         if (franchise == 1){                                                    //Si franchise es 2, es un personaje de Star Trek

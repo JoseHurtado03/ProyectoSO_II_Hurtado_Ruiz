@@ -3,6 +3,8 @@ package Proyecto2_SO_Hurtado_Ruiz;
 
 public class CharacterS {
     private int id;
+    private String[] names;
+    private String name;
     private int ability;
     private int ps;
     private int force;
@@ -11,8 +13,10 @@ public class CharacterS {
     private int countStarvation;
     private RandomGen random;
 
-    public CharacterS(int id) {
+    public CharacterS(int id, String[] names) {
         this.id = id;
+        this.names = names;
+        this.name = this.searchName();
         this.random = new RandomGen();
         this.ability = random.qualityNum(60);
         this.ps = random.qualityNum(70);
@@ -26,6 +30,17 @@ public class CharacterS {
         if (getCountStarvation() == 8){
             setPriority(getPriority() + 1);
         }
+    }
+    
+    public String searchName(){
+        for (int i = 0; i < names.length; i++) {
+            if (names[i] != ""){
+                String name = names[i];
+                names[i] = "";
+                return name;
+            }
+        }
+        return "¿?";
     }
 
     /**
@@ -139,6 +154,15 @@ public class CharacterS {
     public void setRandom(RandomGen random) {
         this.random = random;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     
     
 }

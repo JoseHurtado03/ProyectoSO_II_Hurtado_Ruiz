@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import EDD.Names;
 import EDD.Queue;
 import Proyecto2_SO_Hurtado_Ruiz.Admin;
 import Proyecto2_SO_Hurtado_Ruiz.CharacterS;
@@ -24,6 +25,9 @@ public class Home extends javax.swing.JFrame {
     public static Queue queueST2;
     public static Queue queueST3;
     public static Queue queueSTR;
+    public static Names namesArrays;
+    public static String[] namesSW;
+    public static String[] namesST;
 
     /**
      * Creates new form Home
@@ -43,6 +47,10 @@ public class Home extends javax.swing.JFrame {
         queueSTR = new Queue();
         
         admin = new Admin(queueSW1, queueSW2, queueSW3, queueSWR, queueST1, queueST2, queueST3, queueSTR);
+        
+        namesArrays = new Names();
+        namesSW = namesArrays.namesSW();
+        namesST = namesArrays.namesST();
     }
 
     /**
@@ -66,14 +74,6 @@ public class Home extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        queueST11 = new javax.swing.JList<>();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        queueST22 = new javax.swing.JList<>();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        queueST44 = new javax.swing.JList<>();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        queueST33 = new javax.swing.JList<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -97,6 +97,14 @@ public class Home extends javax.swing.JFrame {
         pQueueSW33 = new javax.swing.JTextArea();
         jScrollPane17 = new javax.swing.JScrollPane();
         pQueueSW44 = new javax.swing.JTextArea();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        pQueueST1 = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        pQueueST3 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        pQueueST2 = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        pQueueSTR = new javax.swing.JTextArea();
         background = new javax.swing.JLabel();
         jScrollPane10 = new javax.swing.JScrollPane();
         pQueueSW2 = new javax.swing.JTextArea();
@@ -156,50 +164,6 @@ public class Home extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("Cola P2");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
-
-        queueST11.setBackground(new java.awt.Color(50, 48, 157));
-        queueST11.setForeground(new java.awt.Color(255, 255, 255));
-        queueST11.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane5.setViewportView(queueST11);
-
-        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 120, 120));
-
-        queueST22.setBackground(new java.awt.Color(50, 48, 157));
-        queueST22.setForeground(new java.awt.Color(255, 255, 255));
-        queueST22.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane6.setViewportView(queueST22);
-
-        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 120, 120));
-
-        queueST44.setBackground(new java.awt.Color(50, 48, 157));
-        queueST44.setForeground(new java.awt.Color(255, 255, 255));
-        queueST44.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane7.setViewportView(queueST44);
-
-        jPanel1.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 120, 120));
-
-        queueST33.setBackground(new java.awt.Color(50, 48, 157));
-        queueST33.setForeground(new java.awt.Color(255, 255, 255));
-        queueST33.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane8.setViewportView(queueST33);
-
-        jPanel1.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 120, 120));
 
         jLabel5.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
@@ -319,6 +283,38 @@ public class Home extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane17, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 390, 120, 120));
 
+        pQueueST1.setBackground(new java.awt.Color(50, 48, 157));
+        pQueueST1.setColumns(20);
+        pQueueST1.setForeground(new java.awt.Color(255, 255, 255));
+        pQueueST1.setRows(5);
+        jScrollPane1.setViewportView(pQueueST1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 120, 120));
+
+        pQueueST3.setBackground(new java.awt.Color(50, 48, 157));
+        pQueueST3.setColumns(20);
+        pQueueST3.setForeground(new java.awt.Color(255, 255, 255));
+        pQueueST3.setRows(5);
+        jScrollPane3.setViewportView(pQueueST3);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 120, 120));
+
+        pQueueST2.setBackground(new java.awt.Color(50, 48, 157));
+        pQueueST2.setColumns(20);
+        pQueueST2.setForeground(new java.awt.Color(255, 255, 255));
+        pQueueST2.setRows(5);
+        jScrollPane2.setViewportView(pQueueST2);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 120, 120));
+
+        pQueueSTR.setBackground(new java.awt.Color(50, 48, 157));
+        pQueueSTR.setColumns(20);
+        pQueueSTR.setForeground(new java.awt.Color(255, 255, 255));
+        pQueueSTR.setRows(5);
+        jScrollPane4.setViewportView(pQueueSTR);
+
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 120, 120));
+
         background.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         background.setForeground(new java.awt.Color(255, 255, 255));
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/146610-large-star-wars-star-background-1920x1080 (2).jpg"))); // NOI18N
@@ -377,20 +373,24 @@ public class Home extends javax.swing.JFrame {
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         //Crea y lleva a su respectiva cola los personajes de Star Wars
         for (int i = 0; i < 20; i++) {
-            CharacterS character = admin.createCharacter();
+            CharacterS character = new CharacterS(i, namesSW);
             admin.locateCharacter(character, 1);
         }
         
         //Crea y lleva a su respectiva cola los personajes de Star Trek
-        for (int i = 0; i < 20; i++) {
-            CharacterS character = admin.createCharacter();
+        for (int i = 20; i < 40; i++) {
+            CharacterS character = new CharacterS(i, namesST);
             admin.locateCharacter(character, 2);
         }
         JOptionPane.showMessageDialog(null, "Personajes agregados a sus colas");
         startButton.setVisible(false);
-        pQueueSW1.setText(queueSW1.showIDs());
-        pQueueSW22.setText(queueSW2.showIDs());
-        pQueueSW33.setText(queueSW3.showIDs());
+        pQueueSW1.setText(queueSW1.showNames());
+        pQueueSW22.setText(queueSW2.showNames());
+        pQueueSW33.setText(queueSW3.showNames());
+        
+        pQueueST1.setText(queueST1.showNames());
+        pQueueST2.setText(queueST2.showNames());
+        pQueueST3.setText(queueST3.showNames());
         
     }//GEN-LAST:event_startButtonActionPerformed
 
@@ -445,6 +445,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
@@ -453,26 +454,25 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane17;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextArea jTextArea5;
     private javax.swing.JLabel medal1;
     private javax.swing.JLabel medal2;
+    private javax.swing.JTextArea pQueueST1;
+    private javax.swing.JTextArea pQueueST2;
+    private javax.swing.JTextArea pQueueST3;
+    private javax.swing.JTextArea pQueueSTR;
     private javax.swing.JTextArea pQueueSW1;
     private javax.swing.JTextArea pQueueSW2;
     private javax.swing.JTextArea pQueueSW22;
     private javax.swing.JTextArea pQueueSW3;
     private javax.swing.JTextArea pQueueSW33;
     private javax.swing.JTextArea pQueueSW44;
-    private javax.swing.JList<String> queueST11;
-    private javax.swing.JList<String> queueST22;
-    private javax.swing.JList<String> queueST33;
-    private javax.swing.JList<String> queueST44;
     private javax.swing.JLabel speedSim;
     private javax.swing.JLabel starTrekLogo;
     private javax.swing.JButton startButton;

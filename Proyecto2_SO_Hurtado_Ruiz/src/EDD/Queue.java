@@ -97,4 +97,14 @@ public class Queue {
         return ids;
     }
     
+    public String showNames(){
+        String names = "";
+        Nodo pointer = getHead();
+        for (int i = 0; i < this.getSize(); i++) {
+            names += pointer.getElement().getName()+"\n";
+            pointer = pointer.getNext();
+        }
+        return names;
+    }
+    
 }
