@@ -176,19 +176,30 @@ public class Admin extends Thread{
         
     }
     
+    public void starvation(){
+        counterAddOne(queueSW2, queueSW1);
+        counterAddOne(queueSW3, queueSW2);
+        counterAddOne(queueST2, queueST1);
+        counterAddOne(queueST3, queueST2);
+    }
+    
+    
     public void counterAddOne(Queue queue1, Queue queue2){
         Nodo pointer = queue1.getHead();
-        for (int i = 0; i < queue1.getSize(); i++) {
-            if (pointer.getElement().getCountStarvation()==8) {
-                pointer.getElement().setCountStarvation(0);
-                if (queue1.getPriority()!=1) {
-                    queue1.lookDispatch(pointer);
-                    queue2.enqueue(pointer.getElement());
+        if (pointer!=null) {
+            for (int i = 0; i < queue1.getSize(); i++) {
+                if (pointer.getElement().getCountStarvation()==8) {
+                    pointer.getElement().setCountStarvation(0);
+                    if (queue1.getPriority()!=1) {
+                        queue1.lookDispatch(pointer);
+                        queue2.enqueue(pointer.getElement());
+                    }
+                } else {
+                    pointer.getElement().setCountStarvation(pointer.getElement().getCountStarvation()+1);
+                    pointer = pointer.getNext();
                 }
-            } else {
-                pointer.getElement().setCountStarvation(pointer.getElement().getCountStarvation()+1);
-                pointer = pointer.getNext();
             }
+            
         }
     }
     

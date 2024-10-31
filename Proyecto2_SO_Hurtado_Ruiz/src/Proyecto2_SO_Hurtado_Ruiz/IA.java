@@ -112,6 +112,8 @@ public class IA extends Thread{
                 int num = Integer.parseInt(time.getText());
                 Home.stateJLabel.setText("Choosing");
                 Home.aIImagenPublic.setIcon(new ImageIcon(getClass().getResource("/Img/chooseRobot (1).png")));
+                
+                admin.starvation();
                 sleep(num);
                 
                 
