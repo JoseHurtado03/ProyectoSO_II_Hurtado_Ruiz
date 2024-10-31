@@ -2,6 +2,7 @@
 package Proyecto2_SO_Hurtado_Ruiz;
 
 import EDD.Names;
+import EDD.Nodo;
 import EDD.Queue;
 import GUI.Home;
 import static GUI.Home.publicQueueST1;
@@ -160,7 +161,6 @@ public class Admin extends Thread{
             try {
                 Home.mutex.acquire();
                 System.out.println("start admin");
-                Home.stateJLabel.setText("Choosing");
                 reforceSW();
                 reforceST();
                 
@@ -174,6 +174,22 @@ public class Admin extends Thread{
             }
         }
         
+    }
+    
+    public void counterAddOne(Queue queue1, Queue queue2){
+        Nodo pointer = queue1.getHead();
+        for (int i = 0; i < queue1.getSize(); i++) {
+            if (pointer.getElement().getCountStarvation()==8) {
+                pointer.getElement().setCountStarvation(0);
+                if (queue1.getPriority()!=1) {
+                    queue1.lookDispatch(pointer);
+                    queue2.enqueue(pointer.getElement());
+                }
+            } else {
+                pointer.getElement().setCountStarvation(pointer.getElement().getCountStarvation()+1);
+                pointer = pointer.getNext();
+            }
+        }
     }
     
     public void updateTextAreas(){

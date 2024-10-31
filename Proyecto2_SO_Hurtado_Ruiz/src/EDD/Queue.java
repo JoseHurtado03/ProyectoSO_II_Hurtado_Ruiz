@@ -6,11 +6,21 @@ public class Queue {
     private Nodo head;
     private Nodo tail;
     private int size;
+    private int priority;
 
-    public Queue() {
+    public Queue(int priority) {
         this.head = null;
         this.tail = null;
         this.size = 0;
+        this.priority=priority;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 
     /**
@@ -117,6 +127,29 @@ public class Queue {
             
         }
         return null;
+    }
+    
+    public void lookDispatch(Nodo characterNode){
+        Nodo pointer = getHead();
+        Nodo aux= pointer;
+        for (int i = 0; i < this.getSize(); i++) {
+            if (characterNode==pointer) {
+                if (pointer==getHead()) {
+                    dispatch();
+                } else if (pointer==getTail()){
+                    aux.setNext(null);
+                    setTail(aux);
+                }else{
+                    aux.setNext(pointer.getNext());
+                    pointer.setNext(null);
+                }
+                
+            } else {
+                aux = pointer;
+                pointer = pointer.getNext();
+            }
+            
+        }
     }
     
 }

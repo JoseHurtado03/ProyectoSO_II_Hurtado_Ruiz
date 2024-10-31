@@ -19,6 +19,7 @@ import static java.lang.Thread.sleep;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -50,9 +51,12 @@ public class IA extends Thread{
     public void decideResult(CharacterS charSW, CharacterS charST){
         RandomGen random = new RandomGen();
         Home.stateJLabel.setText("Waiting");
+        Home.aIImagenPublic.setIcon(new ImageIcon(getClass().getResource("/Img/waitRobot (1).png")));
         sleepCode();
         int result = random.result();
         if (result == 1){
+            Home.stateJLabel.setText("Winner");
+            Home.aIImagenPublic.setIcon(new ImageIcon(getClass().getResource("/Img/winnerRobot (1).png")));
             Game startMiniGame = new Game();
             startMiniGame.setVisible(true);
             while (startMiniGame.isVisible()) {                
@@ -63,17 +67,21 @@ public class IA extends Thread{
                 }
             }
         } else if (result == 2){
+            Home.stateJLabel.setText("Winner");
+            Home.aIImagenPublic.setIcon(new ImageIcon(getClass().getResource("/Img/winnerRobot (1).png")));
             JOptionPane.showMessageDialog(null, "El combate ha resultado en empate");
             charSW.setPriority(1);
             charST.setPriority(1);
             queueSW1.enqueue(charSW);
             queueST1.enqueue(charST);
         } else{
+            Home.stateJLabel.setText("Winner");
+            Home.aIImagenPublic.setIcon(new ImageIcon(getClass().getResource("/Img/winnerRobot (1).png")));
             JOptionPane.showMessageDialog(null, "El combate no se pudo realizar");
             queueSWR.enqueue(charSW);
             queueSTR.enqueue(charST);
         }
-        Home.stateJLabel.setText("Winner");
+        ;
         
     }
     
@@ -102,6 +110,8 @@ public class IA extends Thread{
                 System.out.println("Ready AI");
                 Home.mutex.release();
                 int num = Integer.parseInt(time.getText());
+                Home.stateJLabel.setText("Choosing");
+                Home.aIImagenPublic.setIcon(new ImageIcon(getClass().getResource("/Img/chooseRobot (1).png")));
                 sleep(num);
                 
                 

@@ -52,6 +52,7 @@ public class Home extends javax.swing.JFrame {
     public static JLabel winnerDef;
     public static JLabel counterSW;
     public static JLabel counterST;
+    public static JLabel aIImagenPublic;
     
     /**
      * Creates new form Home
@@ -60,15 +61,15 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         //Colas de Star Wars
-        queueSW1 = new Queue();
-        queueSW2 = new Queue();
-        queueSW3 = new Queue();
-        queueSWR = new Queue();
+        queueSW1 = new Queue(1);
+        queueSW2 = new Queue(2);
+        queueSW3 = new Queue(3);
+        queueSWR = new Queue(4);
         //Colas de Star Trek
-        queueST1 = new Queue();
-        queueST2 = new Queue();
-        queueST3 = new Queue();
-        queueSTR = new Queue();
+        queueST1 = new Queue(1);
+        queueST2 = new Queue(2);
+        queueST3 = new Queue(3);
+        queueSTR = new Queue(4);
         mutex= new Semaphore(1);
         
         stateJLabel=aiState;
@@ -92,6 +93,7 @@ public class Home extends javax.swing.JFrame {
         charSW=warriorSW;
         charST=warriorST;
         winnerDef=winnerDisplay;
+        aIImagenPublic=aiImage;
         
 //        pQueueST1.setText(publicQueueST1.getName());
 //        pQueueST2.setText(publicQueueST2.getName());
@@ -142,7 +144,7 @@ public class Home extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         winnerDisplay = new javax.swing.JLabel();
-        aiImage1 = new javax.swing.JLabel();
+        aiImage = new javax.swing.JLabel();
         aiState = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         fieldDaysMS = new javax.swing.JTextField();
@@ -252,14 +254,15 @@ public class Home extends javax.swing.JFrame {
         winnerDisplay.setText("...");
         jPanel1.add(winnerDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 350, 50));
 
-        aiImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/1f916 (1).png"))); // NOI18N
-        aiImage1.setText("jLabel2");
-        jPanel1.add(aiImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 90, 110));
+        aiImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/1f916 (1).png"))); // NOI18N
+        aiImage.setText("jLabel2");
+        jPanel1.add(aiImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 90, 110));
 
         aiState.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         aiState.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.borderColor"));
+        aiState.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         aiState.setText("Waiting");
-        jPanel1.add(aiState, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 70, -1));
+        jPanel1.add(aiState, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 190, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(220, 223, 219));
@@ -476,7 +479,7 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Winner;
-    private javax.swing.JLabel aiImage1;
+    private javax.swing.JLabel aiImage;
     private javax.swing.JLabel aiState;
     private javax.swing.JLabel background;
     private javax.swing.JTextField fieldDaysMS;
