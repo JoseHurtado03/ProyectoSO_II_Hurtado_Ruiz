@@ -7,22 +7,30 @@ package GUI;
 import javax.swing.JLabel;
 import static GUI.Home.charSW;
 import static GUI.Home.charST;
+import javax.swing.Timer;
+import java.awt.event.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author José Hurtado y Joseph Ruiz
  */
-public class Game extends javax.swing.JFrame {
-
+public class Game extends JFrame implements KeyListener {
+    private int player1Score = 0; // Counter for Player 1 pressing "a"
+    private int player2Score = 0; // Counter for Player 2 pressing "l"
+    private Timer timer; // Timer for the 5 second countdown
+    private boolean value;
     /**
      * Creates new form Game
      */
     public Game() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+        this.addKeyListener(this);
         warriorST.setText(charST.getText());
         warriorSW.setText(charSW.getText());
+        startTimer();
     }
 
     /**
@@ -113,6 +121,35 @@ public class Game extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void startTimer() {
+        timer = new Timer(10000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                timer.stop();
+                showResults();
+                dispose(); // Close the game window after the timer ends
+            }
+        });
+        timer.setRepeats(false); // Ensures the timer runs only once for 10 seconds
+        timer.start();
+    }
+    
+    private void showResults() {
+        JOptionPane.showMessageDialog(this, "Player 1 Score (A presses): " + player1Score + "\n" +
+                                            "Player 2 Score (B presses): " + player2Score, 
+                                            "Game Over", JOptionPane.INFORMATION_MESSAGE);
+        
+    }
+    
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyChar() == 'a') {
+            player1Score++;
+        } else if (e.getKeyChar() == 'l') {
+            player2Score++;
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -163,4 +200,14 @@ public class Game extends javax.swing.JFrame {
     private javax.swing.JLabel warriorST;
     private javax.swing.JLabel warriorSW;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class Admin extends Thread{
     
@@ -26,6 +27,8 @@ public class Admin extends Thread{
     private Queue queueSW2;
     private Queue queueSW3;
     private Queue queueSWR;
+    public JTextField time;
+
     
     private Queue queueST1;
     private Queue queueST2;
@@ -34,7 +37,7 @@ public class Admin extends Thread{
     private Semaphore mutex;
     private static final Logger logger = Logger.getLogger(Admin.class.getName());
 
-    public Admin(Queue queueSW1, Queue queueSW2, Queue queueSW3, Queue queueSWR, Queue queueST1, Queue queueST2, Queue queueST3, Queue queueSTR) {
+    public Admin(Queue queueSW1, Queue queueSW2, Queue queueSW3, Queue queueSWR, Queue queueST1, Queue queueST2, Queue queueST3, Queue queueSTR, JTextField time) {
         this.queueSW1 = queueSW1;
         this.queueSW2 = queueSW2;
         this.queueSW3 = queueSW3;
@@ -44,6 +47,7 @@ public class Admin extends Thread{
         this.queueST2 = queueST2;
         this.queueST3 = queueST3;
         this.queueSTR = queueSTR;
+        this.time = time;
 //        this.mutex= mutex;
         
         namesArrays = new Names();
@@ -116,6 +120,16 @@ public class Admin extends Thread{
         start();
     }
     
+    public void sleepCode() {
+        try {
+            int num = Integer.parseInt(time.getText());
+            sleep(num);
+            System.out.println(num);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void run(){
         while(true){
             try {
@@ -131,7 +145,7 @@ public class Admin extends Thread{
                 publicQueueST3.setText(queueST3.showNames());
                 System.out.println("Ready admin");
                 Home.mutex.release();
-                sleep(1000);
+                sleepCode();
             } catch (InterruptedException e) {
                 System.out.println("error");
                 logger.log(Level.SEVERE, "Thread interrupted", e);

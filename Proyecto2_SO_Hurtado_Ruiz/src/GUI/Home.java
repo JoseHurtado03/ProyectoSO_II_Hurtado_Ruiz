@@ -70,7 +70,7 @@ public class Home extends javax.swing.JFrame {
         mutex= new Semaphore(1);
         
         stateJLabel=aiState;
-        admin = new Admin(queueSW1, queueSW2, queueSW3, queueSWR, queueST1, queueST2, queueST3, queueSTR);
+        admin = new Admin(queueSW1, queueSW2, queueSW3, queueSWR, queueST1, queueST2, queueST3, queueSTR, fieldDaysMS);
         ia= new IA(queueSW1, queueST1, queueSWR, queueSTR, fieldDaysMS);
         
         //Text areas pero públicos

@@ -53,8 +53,15 @@ public class IA extends Thread{
         sleepCode();
         int result = random.result();
         if (result == 1){
-//            Game startMiniGame = new Game();
-//            startMiniGame.setVisible(true);
+            Game startMiniGame = new Game();
+            startMiniGame.setVisible(true);
+            while (startMiniGame.isVisible()) {                
+                try {
+                    sleep(100);
+                    
+                } catch (Exception e) {
+                }
+            }
         } else if (result == 2){
             JOptionPane.showMessageDialog(null, "El combate ha resultado en empate");
             charSW.setPriority(1);
@@ -94,7 +101,9 @@ public class IA extends Thread{
                 decideResult(warriorSW, warriorST);
                 System.out.println("Ready AI");
                 Home.mutex.release();
-                sleep(1000);
+                int num = Integer.parseInt(time.getText());
+                sleep(num);
+                
                 
                 
             } catch (InterruptedException e) {
