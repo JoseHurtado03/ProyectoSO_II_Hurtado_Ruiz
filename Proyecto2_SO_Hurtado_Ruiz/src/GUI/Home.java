@@ -50,6 +50,8 @@ public class Home extends javax.swing.JFrame {
     
     public static JLabel stateJLabel;
     public static JLabel winnerDef;
+    public static JLabel counterSW;
+    public static JLabel counterST;
     
     /**
      * Creates new form Home
@@ -84,6 +86,9 @@ public class Home extends javax.swing.JFrame {
         publicQueueST3= pQueueST3;
         publicQueueSTR= pQueueSTR;
         
+        counterSW= victoriesSW1;
+        counterST= victoriesST1;
+        
         charSW=warriorSW;
         charST=warriorST;
         winnerDef=winnerDisplay;
@@ -101,6 +106,10 @@ public class Home extends javax.swing.JFrame {
         
         warriorSW.setText(charSW.getText());
         warriorST.setText(charST.getText());
+        
+        counterSW.setText(victoriesSW1.getText());
+        counterST.setText(victoriesST1.getText());
+        
         winnerDisplay.setText(winnerDef.getText());
         aiState.setText(stateJLabel.getText());
         
@@ -241,7 +250,7 @@ public class Home extends javax.swing.JFrame {
         winnerDisplay.setForeground(new java.awt.Color(255, 255, 255));
         winnerDisplay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         winnerDisplay.setText("...");
-        jPanel1.add(winnerDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, 160, 50));
+        jPanel1.add(winnerDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 350, 50));
 
         aiImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/1f916 (1).png"))); // NOI18N
         aiImage1.setText("jLabel2");

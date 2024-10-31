@@ -7,9 +7,11 @@ import GUI.Home;
 import static GUI.Home.publicQueueST1;
 import static GUI.Home.publicQueueST2;
 import static GUI.Home.publicQueueST3;
+import static GUI.Home.publicQueueSTR;
 import static GUI.Home.publicQueueSW1;
 import static GUI.Home.publicQueueSW2;
 import static GUI.Home.publicQueueSW3;
+import static GUI.Home.publicQueueSWR;
 import java.awt.Event;
 import java.util.logging.Logger;
 import java.util.concurrent.Semaphore;
@@ -35,6 +37,7 @@ public class Admin extends Thread{
     private Queue queueST3;
     private Queue queueSTR;
     private Semaphore mutex;
+    RandomGen random = new RandomGen();
     private static final Logger logger = Logger.getLogger(Admin.class.getName());
 
     public Admin(Queue queueSW1, Queue queueSW2, Queue queueSW3, Queue queueSWR, Queue queueST1, Queue queueST2, Queue queueST3, Queue queueSTR, JTextField time) {
@@ -76,6 +79,28 @@ public class Admin extends Thread{
         }
         return null;
     }
+    
+    public void reforceST(){
+        int result=random.qualityNum(40);
+        if (!queueSTR.isEmpty() && result==1){
+            queueST1.enqueue(queueSTR.dispatch().getElement());
+        } else if (!queueSTR.isEmpty()&& result==0){
+            queueSTR.enqueue(queueSTR.dispatch().getElement());
+        } else {
+//            nothing juju
+        }
+    }
+    public void reforceSW(){
+        int result=random.qualityNum(40);
+        if (!queueSWR.isEmpty() && result==1){
+            queueSW1.enqueue(queueSWR.dispatch().getElement());
+        } else if (!queueSWR.isEmpty()&& result==0){
+            queueSWR.enqueue(queueSWR.dispatch().getElement());
+        } else {
+//            nothing juju
+        }
+    }
+    
     
 //    public CharacterS createCharacter(){
 //        RandomGen random = new RandomGen();
@@ -136,13 +161,10 @@ public class Admin extends Thread{
                 Home.mutex.acquire();
                 System.out.println("start admin");
                 Home.stateJLabel.setText("Choosing");
-                publicQueueSW1.setText(queueSW1.showNames());
-                publicQueueSW2.setText(queueSW2.showNames());
-                publicQueueSW3.setText(queueSW3.showNames());
-
-                publicQueueST1.setText(queueST1.showNames());
-                publicQueueST2.setText(queueST2.showNames());
-                publicQueueST3.setText(queueST3.showNames());
+                reforceSW();
+                reforceST();
+                
+                updateTextAreas();
                 System.out.println("Ready admin");
                 Home.mutex.release();
                 sleepCode();
@@ -151,7 +173,18 @@ public class Admin extends Thread{
                 logger.log(Level.SEVERE, "Thread interrupted", e);
             }
         }
-                
         
     }
+    
+    public void updateTextAreas(){
+        publicQueueSW1.setText(queueSW1.showNames());
+        publicQueueSW2.setText(queueSW2.showNames());
+        publicQueueSW3.setText(queueSW3.showNames());
+        publicQueueSWR.setText(queueSWR.showNames());
+
+        publicQueueST1.setText(queueST1.showNames());
+        publicQueueST2.setText(queueST2.showNames());
+        publicQueueST3.setText(queueST3.showNames());
+        publicQueueSTR.setText(queueSTR.showNames());
+        }
 }

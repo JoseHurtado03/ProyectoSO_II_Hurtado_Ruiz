@@ -65,8 +65,9 @@ public class Game extends JFrame implements KeyListener {
         warriorSW.setBackground(new java.awt.Color(255, 153, 255));
         warriorSW.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         warriorSW.setForeground(new java.awt.Color(255, 255, 255));
+        warriorSW.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         warriorSW.setText("WarriorSW");
-        jPanel1.add(warriorSW, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 100, 50));
+        jPanel1.add(warriorSW, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 200, 50));
 
         key2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         key2.setForeground(new java.awt.Color(255, 255, 255));
@@ -95,8 +96,9 @@ public class Game extends JFrame implements KeyListener {
         warriorST.setBackground(new java.awt.Color(255, 153, 255));
         warriorST.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         warriorST.setForeground(new java.awt.Color(255, 255, 255));
+        warriorST.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         warriorST.setText("WarriorST");
-        jPanel1.add(warriorST, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 100, 50));
+        jPanel1.add(warriorST, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 200, 50));
 
         instructions1.setBackground(new java.awt.Color(255, 153, 255));
         instructions1.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
@@ -122,11 +124,23 @@ public class Game extends JFrame implements KeyListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startTimer() {
-        timer = new Timer(10000, new ActionListener() {
+        timer = new Timer(5000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 timer.stop();
                 showResults();
+                if (player1Score>player2Score) {
+                    Home.counterST.setText(String.valueOf(Integer.parseInt(Home.counterST.getText())+1));
+                    Home.winnerDef.setText(charST.getText());
+                } else if(player2Score>player1Score) {
+                    Home.counterSW.setText(String.valueOf(Integer.parseInt(Home.counterSW.getText())+1));
+                    Home.winnerDef.setText(charSW.getText());
+                }else{
+                    Home.counterSW.setText(String.valueOf(Integer.parseInt(Home.counterSW.getText())+1));
+                    Home.counterST.setText(String.valueOf(Integer.parseInt(Home.counterST.getText())+1));
+                    Home.winnerDef.setText("Empate");
+
+                }
                 dispose(); // Close the game window after the timer ends
             }
         });
