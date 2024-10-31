@@ -10,6 +10,7 @@ import Proyecto2_SO_Hurtado_Ruiz.Admin;
 import Proyecto2_SO_Hurtado_Ruiz.IA;
 import Proyecto2_SO_Hurtado_Ruiz.CharacterS;
 import java.util.concurrent.Semaphore;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -44,6 +45,12 @@ public class Home extends javax.swing.JFrame {
     public static JTextArea publicQueueST3;
     public static JTextArea publicQueueSTR;
     
+    public static JLabel charSW;
+    public static JLabel charST;
+    
+    public static JLabel stateJLabel;
+    public static JLabel winnerDef;
+    
     /**
      * Creates new form Home
      */
@@ -62,8 +69,10 @@ public class Home extends javax.swing.JFrame {
         queueSTR = new Queue();
         mutex= new Semaphore(1);
         
-        admin = new Admin(queueSW1, queueSW2, queueSW3, queueSWR, queueST1, queueST2, queueST3, queueSTR, mutex);
-        ia= new IA(queueSW1, queueST1, queueSWR, queueSTR, fieldDaysMS, mutex);
+        stateJLabel=aiState;
+        admin = new Admin(queueSW1, queueSW2, queueSW3, queueSWR, queueST1, queueST2, queueST3, queueSTR);
+        ia= new IA(queueSW1, queueST1, queueSWR, queueSTR, fieldDaysMS);
+        
         //Text areas pero públicos
         publicQueueSW1= pQueueSW1;
         publicQueueSW2= pQueueSW2;
@@ -74,6 +83,28 @@ public class Home extends javax.swing.JFrame {
         publicQueueST2= pQueueST2;
         publicQueueST3= pQueueST3;
         publicQueueSTR= pQueueSTR;
+        
+        charSW=warriorSW;
+        charST=warriorST;
+        winnerDef=winnerDisplay;
+        
+//        pQueueST1.setText(publicQueueST1.getName());
+//        pQueueST2.setText(publicQueueST2.getName());
+//        pQueueST3.setText(publicQueueST3.getName());
+//        pQueueSTR.setText(publicQueueSTR.getName());
+//        
+//        pQueueSW1.setText(publicQueueSW1.getName());
+//        pQueueSW2.setText(publicQueueSW2.getName());
+//        pQueueSW3.setText(publicQueueSW3.getName());
+//        pQueueSWR.setText(publicQueueSWR.getName());
+
+        
+        warriorSW.setText(charSW.getText());
+        warriorST.setText(charST.getText());
+        winnerDisplay.setText(winnerDef.getText());
+        aiState.setText(stateJLabel.getText());
+        
+        
     }
 
     /**
@@ -101,16 +132,18 @@ public class Home extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        victoriesST = new javax.swing.JLabel();
+        winnerDisplay = new javax.swing.JLabel();
         aiImage1 = new javax.swing.JLabel();
-        aiState1 = new javax.swing.JLabel();
+        aiState = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         fieldDaysMS = new javax.swing.JTextField();
         victoriesSW1 = new javax.swing.JLabel();
         vs = new javax.swing.JLabel();
-        speedSim = new javax.swing.JLabel();
+        warriorST = new javax.swing.JLabel();
         victoriesST1 = new javax.swing.JLabel();
         vs1 = new javax.swing.JLabel();
+        warriorSW = new javax.swing.JLabel();
+        speedSim1 = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
         pQueueSW1 = new javax.swing.JTextArea();
@@ -204,19 +237,20 @@ public class Home extends javax.swing.JFrame {
         jLabel8.setText("Cola P3");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 360, -1, -1));
 
-        victoriesST.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        victoriesST.setForeground(new java.awt.Color(255, 255, 255));
-        victoriesST.setText("Ganador");
-        jPanel1.add(victoriesST, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, 160, 50));
+        winnerDisplay.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        winnerDisplay.setForeground(new java.awt.Color(255, 255, 255));
+        winnerDisplay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        winnerDisplay.setText("...");
+        jPanel1.add(winnerDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, 160, 50));
 
         aiImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/1f916 (1).png"))); // NOI18N
         aiImage1.setText("jLabel2");
         jPanel1.add(aiImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 90, 110));
 
-        aiState1.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        aiState1.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.borderColor"));
-        aiState1.setText("Waiting");
-        jPanel1.add(aiState1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 70, -1));
+        aiState.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        aiState.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.borderColor"));
+        aiState.setText("Waiting");
+        jPanel1.add(aiState, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 70, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(220, 223, 219));
@@ -241,10 +275,12 @@ public class Home extends javax.swing.JFrame {
         vs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/png-clipart-vs-match-vs-game-thumbnail-removebg-preview (1)_1.png"))); // NOI18N
         jPanel1.add(vs, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, 100, 80));
 
-        speedSim.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        speedSim.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.borderColor"));
-        speedSim.setText("Velocidad");
-        jPanel1.add(speedSim, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 90, -1));
+        warriorST.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        warriorST.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.borderColor"));
+        warriorST.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        warriorST.setText("...");
+        warriorST.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(warriorST, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 170, -1));
 
         victoriesST1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         victoriesST1.setForeground(new java.awt.Color(255, 255, 255));
@@ -253,6 +289,18 @@ public class Home extends javax.swing.JFrame {
 
         vs1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/png-clipart-vs-match-vs-game-thumbnail-removebg-preview (1)_1.png"))); // NOI18N
         jPanel1.add(vs1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 150, 80));
+
+        warriorSW.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        warriorSW.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.borderColor"));
+        warriorSW.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        warriorSW.setText("...");
+        warriorSW.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(warriorSW, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 170, -1));
+
+        speedSim1.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        speedSim1.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.borderColor"));
+        speedSim1.setText("Velocidad");
+        jPanel1.add(speedSim1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 90, -1));
 
         startButton.setText("INICIAR");
         startButton.addActionListener(new java.awt.event.ActionListener() {
@@ -376,9 +424,10 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldDaysMSActionPerformed
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-        admin.StartSimulation();
-        JOptionPane.showMessageDialog(null, "Personajes agregados a sus colas");
-        startButton.setVisible(false);        
+        admin.StartSimulation();        
+        ia.start();
+        
+        startButton.setVisible(false);
     }//GEN-LAST:event_startButtonActionPerformed
 
     /**
@@ -419,7 +468,7 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Winner;
     private javax.swing.JLabel aiImage1;
-    private javax.swing.JLabel aiState1;
+    private javax.swing.JLabel aiState;
     private javax.swing.JLabel background;
     private javax.swing.JTextField fieldDaysMS;
     private javax.swing.JLabel jLabel1;
@@ -456,14 +505,16 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextArea pQueueSW2;
     private javax.swing.JTextArea pQueueSW3;
     private javax.swing.JTextArea pQueueSWR;
-    private javax.swing.JLabel speedSim;
+    private javax.swing.JLabel speedSim1;
     private javax.swing.JLabel starTrekLogo;
     private javax.swing.JButton startButton;
     private javax.swing.JLabel starwarsLogo;
-    private javax.swing.JLabel victoriesST;
     private javax.swing.JLabel victoriesST1;
     private javax.swing.JLabel victoriesSW1;
     private javax.swing.JLabel vs;
     private javax.swing.JLabel vs1;
+    private javax.swing.JLabel warriorST;
+    private javax.swing.JLabel warriorSW;
+    private javax.swing.JLabel winnerDisplay;
     // End of variables declaration//GEN-END:variables
 }

@@ -106,5 +106,17 @@ public class Queue {
         }
         return names;
     }
+    public CharacterS lookFor(String characterName){
+        Nodo pointer = getHead();
+        for (int i = 0; i < this.getSize(); i++) {
+            if (characterName==pointer.getElement().getName()) {
+                return pointer.getElement();
+            } else {
+                pointer = pointer.getNext();
+            }
+            
+        }
+        return null;
+    }
     
 }

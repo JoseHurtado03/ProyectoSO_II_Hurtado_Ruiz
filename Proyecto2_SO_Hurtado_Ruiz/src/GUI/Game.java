@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import javax.swing.JLabel;
+import static GUI.Home.charSW;
+import static GUI.Home.charST;
+
 /**
  *
  * @author José Hurtado y Joseph Ruiz
@@ -15,6 +19,10 @@ public class Game extends javax.swing.JFrame {
      */
     public Game() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        
+        warriorST.setText(charST.getText());
+        warriorSW.setText(charSW.getText());
     }
 
     /**
@@ -27,13 +35,15 @@ public class Game extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        instructions = new javax.swing.JLabel();
+        warriorSW = new javax.swing.JLabel();
         key2 = new javax.swing.JLabel();
         starTrekLogo = new javax.swing.JLabel();
         starwarsLogo2 = new javax.swing.JLabel();
         vs = new javax.swing.JLabel();
         key1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        warriorST = new javax.swing.JLabel();
+        instructions1 = new javax.swing.JLabel();
         smashbutton1 = new javax.swing.JLabel();
         smashbutton = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
@@ -44,15 +54,15 @@ public class Game extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(14, 38, 99));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        instructions.setBackground(new java.awt.Color(255, 153, 255));
-        instructions.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        instructions.setForeground(new java.awt.Color(255, 255, 255));
-        instructions.setText("Presiona repetidamente la tecla");
-        jPanel1.add(instructions, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 270, 50));
+        warriorSW.setBackground(new java.awt.Color(255, 153, 255));
+        warriorSW.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        warriorSW.setForeground(new java.awt.Color(255, 255, 255));
+        warriorSW.setText("WarriorSW");
+        jPanel1.add(warriorSW, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 100, 50));
 
         key2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         key2.setForeground(new java.awt.Color(255, 255, 255));
-        key2.setText("0");
+        key2.setText("L");
         jPanel1.add(key2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 30, 50));
 
         starTrekLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/image_2024-10-22_185537482-removebg-preview (1).png"))); // NOI18N
@@ -66,13 +76,25 @@ public class Game extends javax.swing.JFrame {
 
         key1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         key1.setForeground(new java.awt.Color(255, 255, 255));
-        key1.setText("0");
+        key1.setText("A");
         jPanel1.add(key1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 30, 50));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(220, 223, 219));
         jLabel9.setText("Made by Hurtado, José & Ruiz, Joseph ");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 440, -1, -1));
+
+        warriorST.setBackground(new java.awt.Color(255, 153, 255));
+        warriorST.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        warriorST.setForeground(new java.awt.Color(255, 255, 255));
+        warriorST.setText("WarriorST");
+        jPanel1.add(warriorST, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 100, 50));
+
+        instructions1.setBackground(new java.awt.Color(255, 153, 255));
+        instructions1.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        instructions1.setForeground(new java.awt.Color(255, 255, 255));
+        instructions1.setText("Presiona repetidamente la tecla");
+        jPanel1.add(instructions1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 270, 50));
 
         smashbutton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/button-press-the-button.gif"))); // NOI18N
         jPanel1.add(smashbutton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 200, 170));
@@ -128,7 +150,7 @@ public class Game extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
-    private javax.swing.JLabel instructions;
+    private javax.swing.JLabel instructions1;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel key1;
@@ -138,5 +160,7 @@ public class Game extends javax.swing.JFrame {
     private javax.swing.JLabel starTrekLogo;
     private javax.swing.JLabel starwarsLogo2;
     private javax.swing.JLabel vs;
+    private javax.swing.JLabel warriorST;
+    private javax.swing.JLabel warriorSW;
     // End of variables declaration//GEN-END:variables
 }

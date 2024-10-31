@@ -14,6 +14,7 @@ import java.awt.Event;
 import java.util.logging.Logger;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
+import javax.swing.JOptionPane;
 
 public class Admin extends Thread{
     
@@ -33,7 +34,7 @@ public class Admin extends Thread{
     private Semaphore mutex;
     private static final Logger logger = Logger.getLogger(Admin.class.getName());
 
-    public Admin(Queue queueSW1, Queue queueSW2, Queue queueSW3, Queue queueSWR, Queue queueST1, Queue queueST2, Queue queueST3, Queue queueSTR, Semaphore mutex) {
+    public Admin(Queue queueSW1, Queue queueSW2, Queue queueSW3, Queue queueSWR, Queue queueST1, Queue queueST2, Queue queueST3, Queue queueSTR) {
         this.queueSW1 = queueSW1;
         this.queueSW2 = queueSW2;
         this.queueSW3 = queueSW3;
@@ -43,7 +44,7 @@ public class Admin extends Thread{
         this.queueST2 = queueST2;
         this.queueST3 = queueST3;
         this.queueSTR = queueSTR;
-        this.mutex= mutex;
+//        this.mutex= mutex;
         
         namesArrays = new Names();
         namesSW = namesArrays.namesSW();
@@ -111,12 +112,16 @@ public class Admin extends Thread{
             locateCharacter(character, 2);
         }
         
-        this.start();
+        JOptionPane.showMessageDialog(null, "Personajes agregados a sus colas");
+        start();
     }
     
     public void run(){
         while(true){
             try {
+                Home.mutex.acquire();
+                System.out.println("start admin");
+                Home.stateJLabel.setText("Choosing");
                 publicQueueSW1.setText(queueSW1.showNames());
                 publicQueueSW2.setText(queueSW2.showNames());
                 publicQueueSW3.setText(queueSW3.showNames());
@@ -124,8 +129,11 @@ public class Admin extends Thread{
                 publicQueueST1.setText(queueST1.showNames());
                 publicQueueST2.setText(queueST2.showNames());
                 publicQueueST3.setText(queueST3.showNames());
+                System.out.println("Ready admin");
+                Home.mutex.release();
                 sleep(1000);
             } catch (InterruptedException e) {
+                System.out.println("error");
                 logger.log(Level.SEVERE, "Thread interrupted", e);
             }
         }
