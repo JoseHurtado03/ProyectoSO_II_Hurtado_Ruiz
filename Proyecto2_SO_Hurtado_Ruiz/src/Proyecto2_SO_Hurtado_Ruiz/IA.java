@@ -104,14 +104,14 @@ public class IA extends Thread{
                 
                 Home.charSW.setText(warriorSW.getName());
                 Home.charST.setText(warriorST.getName());
-                System.out.println(warriorSW.getName() +" y "+warriorST.getName());
+                //System.out.println(warriorSW.getName() +" y "+warriorST.getName());
                 
                 decideResult(warriorSW, warriorST);
                 Home.mutex.release();
                 int num = Integer.parseInt(time.getText());
                 Home.aIImagenPublic.setIcon(new ImageIcon(getClass().getResource("/Img/chooseRobot (1).png")));
                 
-                admin.starvation();
+                
                 sleep(num);
                 
                 

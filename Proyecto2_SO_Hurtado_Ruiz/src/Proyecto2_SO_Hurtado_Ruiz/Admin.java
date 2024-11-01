@@ -150,7 +150,7 @@ public class Admin extends Thread{
         try {
             int num = Integer.parseInt(time.getText());
             sleep(num);
-            System.out.println(num);
+            //System.out.println(num);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -166,6 +166,7 @@ public class Admin extends Thread{
                 updateTextAreas();
                 Home.mutex.release();
                 sleepCode();
+                starvation();
             } catch (InterruptedException e) {
                 System.out.println("error");
                 logger.log(Level.SEVERE, "Thread interrupted", e);
@@ -188,11 +189,12 @@ public class Admin extends Thread{
                 if (pointer!=null) {
                     if (pointer.getElement().getCountStarvation()==8) {
                         pointer.getElement().setCountStarvation(0);
-                        System.out.println("Se nos fue a una clase mejor" + pointer.getElement().getName());
-                        if (queue1.getPriority()!=1) {
+//                        if (queue1.getPriority()!=1) {
                             queue1.lookDispatch(pointer);
                             queue2.enqueue(pointer.getElement());
-                        }
+                        System.out.println("Se nos fue a una clase mejor" + pointer.getElement().getName());
+                        System.out.println(queueST1.showNames());
+//                        }
                     } else {
                         pointer.getElement().setCountStarvation(pointer.getElement().getCountStarvation()+1);
                         pointer = pointer.getNext();
