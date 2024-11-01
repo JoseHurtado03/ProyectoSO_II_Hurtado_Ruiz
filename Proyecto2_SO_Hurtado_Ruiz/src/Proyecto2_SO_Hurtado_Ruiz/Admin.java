@@ -160,12 +160,10 @@ public class Admin extends Thread{
         while(true){
             try {
                 Home.mutex.acquire();
-                System.out.println("start admin");
                 reforceSW();
                 reforceST();
                 
                 updateTextAreas();
-                System.out.println("Ready admin");
                 Home.mutex.release();
                 sleepCode();
             } catch (InterruptedException e) {
@@ -186,21 +184,23 @@ public class Admin extends Thread{
     
     public void counterAddOne(Queue queue1, Queue queue2){
         Nodo pointer = queue1.getHead();
-        if (pointer!=null) {
             for (int i = 0; i < queue1.getSize(); i++) {
-                if (pointer.getElement().getCountStarvation()==8) {
-                    pointer.getElement().setCountStarvation(0);
-                    if (queue1.getPriority()!=1) {
-                        queue1.lookDispatch(pointer);
-                        queue2.enqueue(pointer.getElement());
+                if (pointer!=null) {
+                    if (pointer.getElement().getCountStarvation()==8) {
+                        pointer.getElement().setCountStarvation(0);
+                        System.out.println("Se nos fue a una clase mejor" + pointer.getElement().getName());
+                        if (queue1.getPriority()!=1) {
+                            queue1.lookDispatch(pointer);
+                            queue2.enqueue(pointer.getElement());
+                        }
+                    } else {
+                        pointer.getElement().setCountStarvation(pointer.getElement().getCountStarvation()+1);
+                        pointer = pointer.getNext();
                     }
-                } else {
-                    pointer.getElement().setCountStarvation(pointer.getElement().getCountStarvation()+1);
-                    pointer = pointer.getNext();
                 }
             }
             
-        }
+        
     }
     
     public void updateTextAreas(){

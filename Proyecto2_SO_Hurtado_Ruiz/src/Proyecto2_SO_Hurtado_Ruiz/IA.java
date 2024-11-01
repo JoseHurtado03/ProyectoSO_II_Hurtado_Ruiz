@@ -89,7 +89,7 @@ public class IA extends Thread{
         try {
             int num = Integer.parseInt(time.getText());
             sleep(num*10);
-            System.out.println(num);
+            //System.out.println(num);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -107,10 +107,8 @@ public class IA extends Thread{
                 System.out.println(warriorSW.getName() +" y "+warriorST.getName());
                 
                 decideResult(warriorSW, warriorST);
-                System.out.println("Ready AI");
                 Home.mutex.release();
                 int num = Integer.parseInt(time.getText());
-                Home.stateJLabel.setText("Choosing");
                 Home.aIImagenPublic.setIcon(new ImageIcon(getClass().getResource("/Img/chooseRobot (1).png")));
                 
                 admin.starvation();

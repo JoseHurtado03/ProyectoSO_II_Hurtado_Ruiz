@@ -139,9 +139,11 @@ public class Queue {
                 } else if (pointer==getTail()){
                     aux.setNext(null);
                     setTail(aux);
+                    size--;
                 }else{
                     aux.setNext(pointer.getNext());
                     pointer.setNext(null);
+                    size--;
                 }
                 
             } else {
