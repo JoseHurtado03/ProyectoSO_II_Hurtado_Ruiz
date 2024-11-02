@@ -50,13 +50,15 @@ public class IA extends Thread{
     
     public void decideResult(CharacterS charSW, CharacterS charST){
         RandomGen random = new RandomGen();
-        Home.stateJLabel.setText("Waiting");
-        Home.aIImagenPublic.setIcon(new ImageIcon(getClass().getResource("/Img/waitRobot (1).png")));
+        this.status = "Choosing";
+        Home.stateJLabel.setText(status);
+        Home.aIImagenPublic.setIcon(new ImageIcon(getClass().getResource("/Img/chooseRobot (1).png")));
         sleepCode();
         int result = random.result();
+        this.status = "Announcing";
+        Home.stateJLabel.setText(status);
+        Home.aIImagenPublic.setIcon(new ImageIcon(getClass().getResource("/Img/winnerRobot (1).png")));
         if (result == 1){
-            Home.stateJLabel.setText("Winner");
-            Home.aIImagenPublic.setIcon(new ImageIcon(getClass().getResource("/Img/winnerRobot (1).png")));
             Game startMiniGame = new Game();
             startMiniGame.setVisible(true);
             while (startMiniGame.isVisible()) {                
@@ -66,23 +68,20 @@ public class IA extends Thread{
                 } catch (Exception e) {
                 }
             }
-        } else if (result == 2){
-            Home.stateJLabel.setText("Winner");
-            Home.aIImagenPublic.setIcon(new ImageIcon(getClass().getResource("/Img/winnerRobot (1).png")));
+        } else if (result == 2) {
             JOptionPane.showMessageDialog(null, "El combate ha resultado en empate");
             charSW.setPriority(1);
             charST.setPriority(1);
             queueSW1.enqueue(charSW);
             queueST1.enqueue(charST);
-        } else{
-            Home.stateJLabel.setText("Winner");
-            Home.aIImagenPublic.setIcon(new ImageIcon(getClass().getResource("/Img/winnerRobot (1).png")));
+        } else {
             JOptionPane.showMessageDialog(null, "El combate no se pudo realizar");
             queueSWR.enqueue(charSW);
             queueSTR.enqueue(charST);
         }
-        ;
-        
+        this.status = "Waiting";
+        Home.stateJLabel.setText(status);
+        Home.aIImagenPublic.setIcon(new ImageIcon(getClass().getResource("/Img/waitRobot (1).png")));
     }
     
     public void sleepCode() {

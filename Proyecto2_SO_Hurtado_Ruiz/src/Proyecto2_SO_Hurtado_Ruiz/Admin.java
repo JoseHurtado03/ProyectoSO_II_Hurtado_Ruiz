@@ -38,6 +38,7 @@ public class Admin extends Thread{
     private Queue queueST3;
     private Queue queueSTR;
     private Semaphore mutex;
+    private int counter;
     RandomGen random = new RandomGen();
     private static final Logger logger = Logger.getLogger(Admin.class.getName());
 
@@ -52,6 +53,7 @@ public class Admin extends Thread{
         this.queueST3 = queueST3;
         this.queueSTR = queueSTR;
         this.time = time;
+        this.counter = 0;
 //        this.mutex= mutex;
         
         namesArrays = new Names();
@@ -162,13 +164,14 @@ public class Admin extends Thread{
                 Home.mutex.acquire();
                 reforceSW();
                 reforceST();
-                
+                createNewCharacters();
                 updateTextAreas();
+                counter++;
                 Home.mutex.release();
                 sleepCode();
                 starvation();
             } catch (InterruptedException e) {
-                System.out.println("error");
+                System.out.println("Error");
                 logger.log(Level.SEVERE, "Thread interrupted", e);
             }
         }
@@ -197,15 +200,14 @@ public class Admin extends Thread{
 //                        }
                     } else {
                         pointer.getElement().setCountStarvation(pointer.getElement().getCountStarvation()+1);
-                        pointer = pointer.getNext();
-                    }
+                    pointer = pointer.getNext();
                 }
             }
-            
-        
+        }
+
     }
-    
-    public void updateTextAreas(){
+
+    public void updateTextAreas() {
         publicQueueSW1.setText(queueSW1.showNames());
         publicQueueSW2.setText(queueSW2.showNames());
         publicQueueSW3.setText(queueSW3.showNames());
@@ -215,5 +217,19 @@ public class Admin extends Thread{
         publicQueueST2.setText(queueST2.showNames());
         publicQueueST3.setText(queueST3.showNames());
         publicQueueSTR.setText(queueSTR.showNames());
+    }
+    
+    public void createNewCharacters() {
+        if (counter == 2) {
+            if (random.qualityNum(80) == 1) {
+                CharacterS nSW = new CharacterS(random.genRandomNum(0, 100000), namesSW);
+                this.locateCharacter(nSW, 1);
+
+                CharacterS nST = new CharacterS(random.genRandomNum(0, 100000), namesST);
+                this.locateCharacter(nST, 2);
+                System.out.println("Se añadieron"+nSW.getName()+" y "+nST.getName());
+            }
+            counter = 0;
         }
+    }
 }
