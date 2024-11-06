@@ -330,7 +330,7 @@ public class Home extends javax.swing.JFrame {
         pQueueSW1.setSelectedTextColor(new java.awt.Color(255, 255, 255));
         jScrollPane9.setViewportView(pQueueSW1);
 
-        jPanel1.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 120, 120));
+        jPanel1.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 230, 150, 120));
 
         pQueueSW2.setBackground(new java.awt.Color(50, 48, 157));
         pQueueSW2.setColumns(20);
@@ -340,7 +340,7 @@ public class Home extends javax.swing.JFrame {
         pQueueSW2.setSelectedTextColor(new java.awt.Color(255, 255, 255));
         jScrollPane12.setViewportView(pQueueSW2);
 
-        jPanel1.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 230, 120, 120));
+        jPanel1.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 230, 150, 120));
 
         pQueueSW3.setBackground(new java.awt.Color(50, 48, 157));
         pQueueSW3.setColumns(20);
@@ -350,7 +350,7 @@ public class Home extends javax.swing.JFrame {
         pQueueSW3.setSelectedTextColor(new java.awt.Color(255, 255, 255));
         jScrollPane14.setViewportView(pQueueSW3);
 
-        jPanel1.add(jScrollPane14, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 390, 120, 120));
+        jPanel1.add(jScrollPane14, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 390, 150, 120));
 
         pQueueSWR.setBackground(new java.awt.Color(50, 48, 157));
         pQueueSWR.setColumns(20);
@@ -360,7 +360,7 @@ public class Home extends javax.swing.JFrame {
         pQueueSWR.setSelectedTextColor(new java.awt.Color(255, 255, 255));
         jScrollPane17.setViewportView(pQueueSWR);
 
-        jPanel1.add(jScrollPane17, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 390, 120, 120));
+        jPanel1.add(jScrollPane17, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 390, 150, 120));
 
         pQueueST1.setBackground(new java.awt.Color(50, 48, 157));
         pQueueST1.setColumns(20);
@@ -368,7 +368,7 @@ public class Home extends javax.swing.JFrame {
         pQueueST1.setRows(5);
         jScrollPane1.setViewportView(pQueueST1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 120, 120));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 150, 120));
 
         pQueueST3.setBackground(new java.awt.Color(50, 48, 157));
         pQueueST3.setColumns(20);
@@ -376,7 +376,7 @@ public class Home extends javax.swing.JFrame {
         pQueueST3.setRows(5);
         jScrollPane3.setViewportView(pQueueST3);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 120, 120));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 150, 120));
 
         pQueueST2.setBackground(new java.awt.Color(50, 48, 157));
         pQueueST2.setColumns(20);
@@ -384,7 +384,7 @@ public class Home extends javax.swing.JFrame {
         pQueueST2.setRows(5);
         jScrollPane2.setViewportView(pQueueST2);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 120, 120));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 150, 120));
 
         pQueueSTR.setBackground(new java.awt.Color(50, 48, 157));
         pQueueSTR.setColumns(20);
@@ -392,7 +392,7 @@ public class Home extends javax.swing.JFrame {
         pQueueSTR.setRows(5);
         jScrollPane4.setViewportView(pQueueSTR);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 120, 120));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 150, 120));
 
         background.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         background.setForeground(new java.awt.Color(255, 255, 255));

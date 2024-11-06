@@ -32,6 +32,8 @@ public class IA extends Thread{
     private Queue queueST1;
     private Queue queueSWR;
     private Queue queueSTR;
+//    public Queue queueSTWinner;
+//    public Queue queueSWWinner;
     private String status;
     public JTextField time;
     private Semaphore mutex;

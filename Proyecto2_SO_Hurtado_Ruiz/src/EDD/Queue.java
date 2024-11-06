@@ -131,11 +131,12 @@ public class Queue {
         String names = "";
         Nodo pointer = getHead();
         for (int i = 0; i < this.getSize(); i++) {
-            names += pointer.getElement().getName()+ pointer.getElement().getCountStarvation()+"\n";
+            names += pointer.getElement().getName()+" "+pointer.getElement().getId() +" "+pointer.getElement().getCountStarvation()+"\n";
             pointer = pointer.getNext();
         }
         return names;
     }
+    
     public CharacterS lookFor(String characterName){
         Nodo pointer = getHead();
         for (int i = 0; i < this.getSize(); i++) {

@@ -20,7 +20,8 @@ public class Game extends JFrame implements KeyListener {
     private int player1Score = 0; // Counter for Player 1 pressing "a"
     private int player2Score = 0; // Counter for Player 2 pressing "l"
     private Timer timer; // Timer for the 5 second countdown
-    private boolean value;
+//    private boolean value;
+//    public String winner;
     /**
      * Creates new form Game
      */
@@ -132,13 +133,16 @@ public class Game extends JFrame implements KeyListener {
                 if (player1Score>player2Score) {
                     Home.counterST.setText(String.valueOf(Integer.parseInt(Home.counterST.getText())+1));
                     Home.winnerDef.setText(charST.getText());
+//                    winner=charST.getText();
                 } else if(player2Score>player1Score) {
                     Home.counterSW.setText(String.valueOf(Integer.parseInt(Home.counterSW.getText())+1));
                     Home.winnerDef.setText(charSW.getText());
+//                    winner=charSW.getText();
                 }else{
                     Home.counterSW.setText(String.valueOf(Integer.parseInt(Home.counterSW.getText())+1));
                     Home.counterST.setText(String.valueOf(Integer.parseInt(Home.counterST.getText())+1));
                     Home.winnerDef.setText("Empate");
+//                    winner=charST.getText();
 
                 }
                 dispose(); // Close the game window after the timer ends
