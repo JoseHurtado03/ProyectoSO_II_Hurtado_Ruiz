@@ -70,6 +70,7 @@ public class Queue {
     }
     
     public Nodo enqueue(CharacterS element){
+       
         Nodo node = new Nodo(element);
         if (isEmpty()){
             setHead(node);
@@ -81,6 +82,25 @@ public class Queue {
         }
         size++;
         return node;
+    }
+    
+    public void gettingPeopleOut(Queue queueSuperior){
+        Nodo pointer = getHead();
+        while (pointer != null) {
+            // Guarda el siguiente nodo antes de modificar la lista
+            Nodo next = pointer.getNext();
+
+            // Verifica la condición de starvation y realiza el traslado si aplica
+            if (pointer.getElement().getCountStarvation() == 8) {
+                // Transfiere el elemento y elimina el nodo actual de la cola
+                queueSuperior.enqueue(pointer.getElement());
+                lookDispatch(pointer);
+                System.out.println("Se nos fue a una clase mejor " + pointer.getElement().getName());
+            }
+
+            // Avanza al siguiente nodo
+            pointer = next;
+        }
     }
     
     public Nodo dispatch(){
@@ -111,7 +131,7 @@ public class Queue {
         String names = "";
         Nodo pointer = getHead();
         for (int i = 0; i < this.getSize(); i++) {
-            names += pointer.getElement().getName()+"\n";
+            names += pointer.getElement().getName()+ pointer.getElement().getCountStarvation()+"\n";
             pointer = pointer.getNext();
         }
         return names;
@@ -129,28 +149,30 @@ public class Queue {
         return null;
     }
     
-    public void lookDispatch(Nodo characterNode){
+    public void lookDispatch(Nodo characterNode) {
         Nodo pointer = getHead();
-        Nodo aux= pointer;
-        for (int i = 0; i < this.getSize(); i++) {
-            if (characterNode==pointer) {
-                if (pointer==getHead()) {
+        Nodo aux = null; // Auxiliar para el nodo anterior
+
+        // Itera para encontrar el nodo a eliminar
+        while (pointer != null) {
+            if (characterNode == pointer) {
+                if (pointer == getHead()) {
+                    // Si es la cabeza, usa dispatch
                     dispatch();
-                } else if (pointer==getTail()){
+                } else if (pointer == getTail()) {
+                    // Si es la cola, actualiza el puntero de aux
                     aux.setNext(null);
                     setTail(aux);
                     size--;
-                }else{
+                } else {
+                    // Nodo en el medio de la cola
                     aux.setNext(pointer.getNext());
-                    pointer.setNext(null);
                     size--;
                 }
-                
-            } else {
-                aux = pointer;
-                pointer = pointer.getNext();
+                return; // Salir de la función al encontrar el nodo
             }
-            
+            aux = pointer;
+            pointer = pointer.getNext();
         }
     }
     

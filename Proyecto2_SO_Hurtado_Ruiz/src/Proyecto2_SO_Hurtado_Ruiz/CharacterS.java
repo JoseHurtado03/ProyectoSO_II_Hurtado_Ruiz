@@ -12,6 +12,7 @@ public class CharacterS {
     private int priority;
     private int countStarvation;
     private RandomGen random;
+    private boolean out;
 
     public CharacterS(int id, String[] names) {
         this.id = id;
@@ -24,7 +25,26 @@ public class CharacterS {
         this.agility = random.qualityNum(40);
         this.priority = random.genPriority(ability, ps, force, agility);
         this.countStarvation = 0;
+        this.out= false;
     }
+
+    public String[] getNames() {
+        return names;
+    }
+
+    public void setNames(String[] names) {
+        this.names = names;
+    }
+
+    public boolean isOut() {
+        return out;
+    }
+
+    public void setOut(boolean out) {
+        this.out = out;
+    }
+    
+    
     
     public void changePriority(){
         if (getCountStarvation() == 8){

@@ -109,7 +109,7 @@ public class IA extends Thread{
                 Home.mutex.release();
                 int num = Integer.parseInt(time.getText());
                 Home.aIImagenPublic.setIcon(new ImageIcon(getClass().getResource("/Img/chooseRobot (1).png")));
-                
+                admin.starvation();
                 
                 sleep(num);
                 

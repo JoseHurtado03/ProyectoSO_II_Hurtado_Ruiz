@@ -169,7 +169,7 @@ public class Admin extends Thread{
                 counter++;
                 Home.mutex.release();
                 sleepCode();
-                starvation();
+                
             } catch (InterruptedException e) {
                 System.out.println("Error");
                 logger.log(Level.SEVERE, "Thread interrupted", e);
@@ -186,26 +186,28 @@ public class Admin extends Thread{
     }
     
     
-    public void counterAddOne(Queue queue1, Queue queue2){
-        Nodo pointer = queue1.getHead();
-            for (int i = 0; i < queue1.getSize(); i++) {
-                if (pointer!=null) {
-                    if (pointer.getElement().getCountStarvation()==8) {
-                        pointer.getElement().setCountStarvation(0);
-//                        if (queue1.getPriority()!=1) {
-                            queue1.lookDispatch(pointer);
-                            queue2.enqueue(pointer.getElement());
-                        System.out.println("Se nos fue a una clase mejor" + pointer.getElement().getName());
-                        System.out.println(queueST1.showNames());
-//                        }
-                    } else {
-                        pointer.getElement().setCountStarvation(pointer.getElement().getCountStarvation()+1);
-                    pointer = pointer.getNext();
-                }
-            }
-        }
+public void counterAddOne(Queue queue1, Queue queue2) {
+    Nodo pointer = queue1.getHead();
+    
+    while (pointer != null) {
+        // Incrementa el contador de starvation
+        pointer.getElement().setCountStarvation(pointer.getElement().getCountStarvation() + 1);
 
+        // Guarda el siguiente nodo para avanzar después de la eliminación, si es necesario
+        Nodo next = pointer.getNext();
+        
+        // Verifica si el contador ha alcanzado 8
+        if (pointer.getElement().getCountStarvation() >= 8) {
+            // Transfiere el nodo a la cola superior y elimínalo de la cola actual
+            pointer.getElement().setCountStarvation(0);
+            queue2.enqueue(pointer.getElement());
+            queue1.lookDispatch(pointer);
+        }
+        
+        // Avanza al siguiente nodo
+        pointer = next;
     }
+}
 
     public void updateTextAreas() {
         publicQueueSW1.setText(queueSW1.showNames());
